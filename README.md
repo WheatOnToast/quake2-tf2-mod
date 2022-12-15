@@ -12,6 +12,7 @@ Features of the mod:
 How to play mod:
 
 - Just place the mod and shortcut into your Quake 2 folder
+- Make sure to copy and put "pak0.pak" within your "tf2-mod" folder
 - If shortcut doesn't work just boot up your mod by opening vanilla Q2
 - Once the mod is working, create a simple deathmatch game and the mod will do its magic :)
 
