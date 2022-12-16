@@ -27,8 +27,8 @@ How to play mod:
 
 
        - Five random and wacky perks can be rolled by pressing "V"
-       - These perks can be: super bullets, speed boost, double health,
-         explosive bullets, and snail mode
+       - These perks can be: super bullets, infinite ammo, double health,
+         explosive bullets, and low health...
        - Each of these perks will last for 15 seconds 
          (but if you span the "V" key you can rotate through them and go crazy :D)
 - Reworked Quake 2 weapons into TF2 weapons
