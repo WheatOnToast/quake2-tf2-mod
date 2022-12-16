@@ -29,6 +29,7 @@ c:\users\josef\git\q2-mod\release\snd_dma.obj
 c:\users\josef\git\q2-mod\release\qmenu.obj
 c:\users\josef\git\q2-mod\release\q_shwin.obj
 c:\users\josef\git\q2-mod\release\q_shared.obj
+c:\users\josef\git\q2-mod\release\pmove.obj
 c:\users\josef\git\q2-mod\release\net_wins.obj
 c:\users\josef\git\q2-mod\release\net_chan.obj
 c:\users\josef\git\q2-mod\release\menu.obj
@@ -45,7 +46,6 @@ c:\users\josef\git\q2-mod\release\sv_world.obj
 c:\users\josef\git\q2-mod\release\sv_user.obj
 c:\users\josef\git\q2-mod\release\sv_send.obj
 c:\users\josef\git\q2-mod\release\sv_main.obj
-c:\users\josef\git\q2-mod\release\pmove.obj
 c:\users\josef\git\q2-mod\release\quake2.exe
 c:\users\josef\git\q2-mod\release\q2.res
 c:\users\josef\git\q2-mod\release\gamex86.exp

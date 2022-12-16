@@ -34,6 +34,7 @@ void Cmd_Class_f(edict_t* ent, char* cmd)
 	if (Q_stricmp(cmd, "soldier") == 0) {
 		ent->client->resp.class = 1;
 		gi.centerprintf(ent, "You have chosen Soldier!\n\n\n");
+		
 		Cmd_Kill_f(ent);
 	}
 	else if (Q_stricmp(cmd, "pyro") == 0) {
@@ -49,6 +50,8 @@ void Cmd_Class_f(edict_t* ent, char* cmd)
 	else if (Q_stricmp(cmd, "scout") == 0) {
 		ent->client->resp.class = 4;
 		gi.centerprintf(ent, "You have chosen Scout!\n\n\n");
+		
+
 		Cmd_Kill_f(ent);
 	}
 	else if (Q_stricmp(cmd, "sniper") == 0) {
@@ -66,7 +69,7 @@ void Cmd_Class_f(edict_t* ent, char* cmd)
 
 void Cmd_SwitchClass_f(edict_t* ent, char* cmd)
 {
-	gi.centerprintf(ent, "Please choose your MOS\n\nG - Soldier\nM - Pyro\n");
+	gi.centerprintf(ent, "Choose your class:\n\nG - Soldier\nM - Pyro\n");
 	if (Q_stricmp(cmd, "soldier") == 0) {
 		ent->client->resp.class = 1;
 		gi.centerprintf(ent, "You have chosen Soldier.\n\n\n");

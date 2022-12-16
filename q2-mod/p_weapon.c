@@ -780,10 +780,10 @@ void Weapon_RocketLauncher_Fire (edict_t *ent)
 
 void Weapon_RocketLauncher (edict_t *ent)
 {
-	static int	pause_frames[]	= { 6, 7, 8, 9, 15, 0 };
+	static int	pause_frames[]	= { 6, 15, 0 };
 	static int	fire_frames[]	= {5, 0};
 
-	Weapon_Generic (ent, 4, 12, 15, 10, pause_frames, fire_frames, Weapon_RocketLauncher_Fire);
+	Weapon_Generic (ent, 4, 12, 15, 16, pause_frames, fire_frames, Weapon_RocketLauncher_Fire);
 }
 
 
@@ -1187,7 +1187,7 @@ void weapon_shotgun_fire (edict_t *ent)
 	vec3_t		start;
 	vec3_t		forward, right;
 	vec3_t		offset;
-	int			damage = 4;
+	int			damage = 2;
 	int			kick = 8;
 
 	if (ent->client->ps.gunframe == 9)
@@ -1218,10 +1218,26 @@ void weapon_shotgun_fire (edict_t *ent)
 		fire_rocket(ent, start, forward, damage, 650, 120, 120);
 	}
 
-	if (deathmatch->value)
-		fire_shotgun (ent, start, forward, damage, kick, 500, 500, DEFAULT_DEATHMATCH_SHOTGUN_COUNT, MOD_SHOTGUN);
-	else
-		fire_shotgun (ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+	if (deathmatch->value) {
+		int crit = random() * 100;
+		if (crit == 0 || ent->client->perkCrit == true) {
+			fire_bfg(ent, start, forward, 100, 650, 120);
+		}
+		if (ent->client->perkRocket == true) {
+			fire_rocket(ent, start, forward, damage, 650, 120, 120);
+		}
+		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_DEATHMATCH_SHOTGUN_COUNT, MOD_SHOTGUN);
+	}
+	else {
+		int crit = random() * 100;
+		if (crit == 0 || ent->client->perkCrit == true) {
+			fire_bfg(ent, start, forward, 100, 650, 120);
+		}
+		if (ent->client->perkRocket == true) {
+			fire_rocket(ent, start, forward, damage, 650, 120, 120);
+		}
+		fire_shotgun(ent, start, forward, damage, kick, 500, 500, DEFAULT_SHOTGUN_COUNT, MOD_SHOTGUN);
+	}
 
 	// send muzzle flash
 	gi.WriteByte (svc_muzzleflash);
@@ -1348,6 +1364,13 @@ void weapon_railgun_fire (edict_t *ent)
 
 	VectorSet(offset, 0, 7,  ent->viewheight-8);
 	P_ProjectSource (ent->client, ent->s.origin, offset, forward, right, start);
+	int crit = random() * 100;
+	if (crit == 0 || ent->client->perkCrit == true) {
+		fire_bfg(ent, start, forward, 100, 650, 120);
+	}
+	if (ent->client->perkRocket == true) {
+		fire_rocket(ent, start, forward, damage, 650, 120, 120);
+	}
 	fire_rail (ent, start, forward, damage, kick);
 
 	// send muzzle flash

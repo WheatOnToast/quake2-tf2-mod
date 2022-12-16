@@ -605,7 +605,7 @@ void InitClientPersistant (gclient_t *client)
 		client->pers.max_health		= 200;
 
 		client->pers.max_bullets	= 0;
-		client->pers.max_shells		= 0;
+		client->pers.max_shells		= 50;
 		client->pers.max_rockets	= 999;
 		client->pers.max_grenades	= 20;
 		client->pers.max_cells		= 0;
@@ -620,14 +620,14 @@ void InitClientPersistant (gclient_t *client)
 		index = ITEM_INDEX(item);
 		client->pers.inventory[index] += client->pers.max_rockets;
 
-		item = FindItem("Grenade Launcher");	//give grenade launcher
+		item = FindItem("Super Shotgun");
 		client->pers.selected_item = ITEM_INDEX(item);
-		client->pers.inventory[client->pers.selected_item] = 2;
-		client->newweapon = item;
+		client->pers.inventory[client->pers.selected_item] = 1;
+		client->pers.weapon = item;
 
-		item = FindItem("Grenades"); //give grenades
+		item = FindItem("Shells"); //give ammo
 		index = ITEM_INDEX(item);
-		client->pers.inventory[index] += client->pers.max_grenades;
+		client->pers.inventory[index] += client->pers.max_shells;
 	}
 	else if (client->resp.class == 2) { //are you pyro?
 		client->pers.health			= 150;
@@ -673,8 +673,8 @@ void InitClientPersistant (gclient_t *client)
 		client->pers.health = 125;
 		client->pers.max_health = 125;
 
-		client->pers.max_bullets = 50;
-		client->pers.max_shells = 0;
+		client->pers.max_bullets = 0;
+		client->pers.max_shells = 50;
 		client->pers.max_rockets = 0;
 		client->pers.max_grenades = 0;
 		client->pers.max_cells = 0;
@@ -685,21 +685,19 @@ void InitClientPersistant (gclient_t *client)
 		client->pers.inventory[client->pers.selected_item] = 1;
 		client->pers.weapon = item;
 
-		item = FindItem("Bullets"); //give ammo
+		item = FindItem("Shells"); //give ammo
 		index = ITEM_INDEX(item);
-		client->pers.inventory[index] += client->pers.max_bullets;
-
-		
+		client->pers.inventory[index] += client->pers.max_shells;		
 	} 
 	else if (client->resp.class == 5) { //are you sniper?
 		client->pers.health = 125;
 		client->pers.max_health = 125;
 
-		client->pers.max_bullets = 50;
+		client->pers.max_bullets = 0;
 		client->pers.max_shells = 0;
 		client->pers.max_rockets = 0;
 		client->pers.max_grenades = 0;
-		client->pers.max_cells = 50;
+		client->pers.max_cells = 0;
 		client->pers.max_slugs = 20;
 
 		item = FindItem("Railgun");
@@ -709,7 +707,7 @@ void InitClientPersistant (gclient_t *client)
 
 		item = FindItem("Slugs"); //give ammo
 		index = ITEM_INDEX(item);
-		client->pers.inventory[index] += client->pers.max_cells;
+		client->pers.inventory[index] += client->pers.max_slugs;
 
 
 	}
@@ -1857,8 +1855,44 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 			ent->client->perkCrit = true;
 			break;
 		case 1:
-			gi.centerprintf(ent, "Speed Boost!!\n\n%.1f", ent->client->p_timer);
+
+			gi.centerprintf(ent, "Infinite Ammo!!\n\n%.1f", ent->client->p_timer);
 			ent->client->perkSpeed = true;
+				if (ent->client->resp.class == 1) {
+					gitem_t* item;
+					int index;
+					item = FindItem("Shells"); //give ammo
+					index = ITEM_INDEX(item);
+					client->pers.inventory[index] = client->pers.max_shells;
+				}
+				if (ent->client->resp.class == 2) {
+					gitem_t* item;
+					int index;
+					item = FindItem("Bullets"); //give ammo
+					index = ITEM_INDEX(item);
+					client->pers.inventory[index] = client->pers.max_bullets;
+				}
+				if (ent->client->resp.class == 3) {
+					gitem_t* item;
+					int index;
+					item = FindItem("Bullets"); //give ammo
+					index = ITEM_INDEX(item);
+					client->pers.inventory[index] = client->pers.max_bullets;
+				}
+				if (ent->client->resp.class == 4) {
+					gitem_t* item;
+					int index;
+					item = FindItem("Shells"); //give ammo
+					index = ITEM_INDEX(item);
+					client->pers.inventory[index] = client->pers.max_shells;
+				}
+				if (ent->client->resp.class == 5) {
+					gitem_t* item;
+					int index;
+					item = FindItem("Slugs"); //give ammo
+					index = ITEM_INDEX(item);
+					client->pers.inventory[index] = client->pers.max_slugs;
+				}
 			break;
 		case 2:
 			gi.centerprintf(ent, "Double Health!!\n\n%.1f", ent->client->p_timer);
@@ -1876,8 +1910,9 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 			ent->client->perkRocket = true;
 			break;
 		case 4:
-			gi.centerprintf(ent, "Speed Decreased!!\n\n%.1f", ent->client->p_timer);
-			ent->client->perkLowSpeed = true;
+			gi.centerprintf(ent, "Low Health...\n\n%.1f", ent->client->p_timer);
+			ent->health = 1;
+			
 			break;
 		};
 		if (ent->client->p_timer <= 0.00000) {
@@ -1886,16 +1921,19 @@ void ClientThink (edict_t *ent, usercmd_t *ucmd)
 			ent->client->perkCrit = false;
 			ent->client->perkRocket = false;
 			ent->client->perkSpeed = false;
-			ent->client->perkLowSpeed = false;
 
-			ent->client->perkHealth = false;
-			ent->max_health -= (ent->max_health / 2);
-			ent->health = ent->max_health;
-			
+			if (ent->client->perkHealth == true){
+				ent->max_health -= (ent->max_health / 2);
+				ent->health = ent->max_health;
+				ent->client->perkHealth = false;
+			}
 		
-			
+			if (ent->client->perkLowHealth == true) {
+				ent->health = ent->max_health;
+				ent->client->perkLowHealth = false;
+			}
+
 			ent->client->perkStart = 0;
-			
 		}
 
 		ent->client->p_timer = ent->client->perk_time - time_increase;

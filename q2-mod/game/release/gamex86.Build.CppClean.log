@@ -15,7 +15,6 @@ c:\users\josef\git\q2-mod\game\release\g_weapon.obj
 c:\users\josef\git\q2-mod\game\release\g_utils.obj
 c:\users\josef\git\q2-mod\game\release\g_turret.obj
 c:\users\josef\git\q2-mod\game\release\g_spawn.obj
-c:\users\josef\git\q2-mod\game\release\g_class.obj
 c:\users\josef\git\q2-mod\game\release\m_insane.obj
 c:\users\josef\git\q2-mod\game\release\m_infantry.obj
 c:\users\josef\git\q2-mod\game\release\m_hover.obj
@@ -47,6 +46,7 @@ c:\users\josef\git\q2-mod\game\release\m_parasite.obj
 c:\users\josef\git\q2-mod\game\release\m_mutant.obj
 c:\users\josef\git\q2-mod\game\release\m_move.obj
 c:\users\josef\git\q2-mod\game\release\m_medic.obj
+c:\users\josef\git\q2-mod\game\release\g_class.obj
 c:\users\josef\git\q2-mod\release\gamex86.lib
 c:\users\josef\git\q2-mod\release\gamex86.exp
 c:\users\josef\git\q2-mod\game\release\gamex86.dll

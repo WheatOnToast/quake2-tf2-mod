@@ -990,7 +990,7 @@ struct gclient_s
 	qboolean	perkRocket;
 	qboolean	perkSpeed;
 	qboolean	perkHealth;
-	qboolean	perkLowSpeed;
+	qboolean	perkLowHealth;
 
 };
 
@@ -1142,4 +1142,3 @@ struct edict_s
 	moveinfo_t		moveinfo;
 	monsterinfo_t	monsterinfo;
 };
-
