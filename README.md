@@ -5,7 +5,7 @@ Features of the mod:
 
 - 5 different classes
 - 5 random perks you can select
-- Reworked Quake 2 weapons (flamethrower, rocket jumper, etc.)
+- Reworked Quake 2 weapons into TF2 weapons (flamethrower, rocket jumper, etc.)
 
 
 
