@@ -31,7 +31,7 @@ How to play mod:
          explosive bullets, and snail mode
        - Each of these perks will last for 15 seconds 
          (but if you span the "V" key you can rotate through them and go crazy :D)
-- Reworked Quake 2 weapons
+- Reworked Quake 2 weapons into TF2 weapons
 
        - Once of the biggest parts of Team Fortress 2 is the 
          random chance of shooting critical hit bullets, rockets, flames, etc.
@@ -39,11 +39,11 @@ How to play mod:
        - Just go all over the place with your weapons and you may see one of these critical hits
        
        - Soldier has the "Rocket Jumper": a rocket launcher that shoots 
-         no-damage rockets, but gives the soldier great momentum and a grenade launcher.
+         no-damage rockets, but gives the soldier great momentum and he has a Super Shotgun.
        - Pyro has the "Flamethrower": a modified machine gun that 
          shoots blazing flames at the opponent
        - Heavy has his standard "Minigun": a chaingun that does 
          massive damage, but it takes a long time to rev up. 
-       - Scout has the basic Q2 Nailgun.
+       - Scout has the basic Shotgun.
        - Sniper has the basic Railgun.
         
