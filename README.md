@@ -33,7 +33,7 @@ How to play mod:
          (but if you span the "V" key you can rotate through them and go crazy :D)
 - Reworked Quake 2 weapons into TF2 weapons
 
-       - Once of the biggest parts of Team Fortress 2 is the 
+       - One of the biggest parts of Team Fortress 2 is the 
          random chance of shooting critical hit bullets, rockets, flames, etc.
        - But for this mod, you will have a small chance of shooting a BFG round as well
        - Just go all over the place with your weapons and you may see one of these critical hits
